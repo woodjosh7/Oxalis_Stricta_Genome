@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=woo_raw_ont_minimap2_aln_woodsorrel_v0		# Job name 
+#SBATCH --job-name=woo_raw_ont_minimap2_aln_woodsorrel_v0.1		# Job name 
 #SBATCH --partition=buell_p		# Partition name (batch, highmem_p, or gpu_p)
 #SBATCH --ntasks=1			# Run job in single task, by default using 1 CPU core on a single node
 #SBATCH --cpus-per-task=20	 	# CPU core count per task, by default 1 CPU core per task
@@ -13,9 +13,9 @@ ml purge
 ml minimap2/2.22-GCC-8.3.0
 ml SAMtools/1.10-GCC-8.3.0
 
-minimap2 -ax map-ont -t 20 flye_assemblies/woodsorrel/woodsorrel_v0.fasta \
+minimap2 -ax map-ont -t 20 flye_assemblies/woodsorrel/woodsorrel_v0.1.fasta \
 basecalled_data/woo_all_guppy5.0.14_10kb.fastq \
-> minimap2_aln/woodsorrel/woo_all_guppy5.0.14_10kb_on_woodsorrel_v0.sam
+> minimap2_aln/woodsorrel/woo_all_guppy5.0.14_10kb_on_woodsorrel_v0.1.sam
 
 #Racon needs SAM so no point in sorting and compressing into BAM
 
@@ -38,4 +38,4 @@ basecalled_data/woo_all_guppy5.0.14_10kb.fastq \
 #--sam-hit-only: In SAM, don’t output unmapped reads.
 #-t: Number of Threads
 
-#sbatch woo_raw_ont_minimap2_aln_woodsorrel_v0.sh
+#sbatch woo_raw_ont_minimap2_aln_woodsorrel_v0.1.sh
